@@ -19,6 +19,6 @@ wget -nv https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux
 
 python2.7 -c 'execfile("/tmp/linux-installer.py"); main(install_dir="/tmp")'
 
-mv calibre "$BUILD_DIR/$VENDORED_TOOLBELT"
+mv /tmp/calibre "$BUILD_DIR/$VENDORED_TOOLBELT"
 
 export PATH=""$BUILD_DIR/$VENDORED_TOOLBELT"/bin:\$PATH"
