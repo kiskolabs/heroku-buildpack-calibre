@@ -24,10 +24,10 @@ python2.7 -c 'execfile("/tmp/linux-installer.py"); main(install_dir="/tmp")'
 
 echo "-----> Moving Calibre into place"
 
-mv /tmp/calibre "$BUILD_DIR/$VENDORED_TOOLBELT"
+mv /tmp/calibre "$BUILD_DIR/$VENDORED_CALIBRE"
 
 echo "-----> Setting up path"
 
-export PATH=""$BUILD_DIR/$VENDORED_TOOLBELT"/bin:\$PATH"
+export PATH=""$BUILD_DIR/$VENDORED_CALIBRE"/bin:\$PATH"
 
 echo "-----> Calibre install done"
