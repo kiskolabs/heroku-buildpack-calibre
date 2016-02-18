@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # bin/detect <build-dir>
 
-echo 'Calibre'
+echo "Calibre"
 exit 0

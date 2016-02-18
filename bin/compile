@@ -13,12 +13,21 @@ VENDORED_CALIBRE="vendor/calibre"
 
 rm -rf "$BUILD_DIR/$VENDORED_TOOLBELT"
 mkdir -p "$BUILD_DIR"
-cd
 
-wget -nv https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py -O /tmp/linux-installer.py
+echo "-----> Fetching Calibre"
+
+wget -nv -quiet https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py -O /tmp/linux-installer.py
+
+echo "-----> Installing Calibre"
 
 python2.7 -c 'execfile("/tmp/linux-installer.py"); main(install_dir="/tmp")'
 
+echo "-----> Moving Calibre into place"
+
 mv /tmp/calibre "$BUILD_DIR/$VENDORED_TOOLBELT"
 
+echo "-----> Setting up path"
+
 export PATH=""$BUILD_DIR/$VENDORED_TOOLBELT"/bin:\$PATH"
+
+echo "-----> Calibre install done"
