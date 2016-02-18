@@ -16,11 +16,11 @@ mkdir -p "$BUILD_DIR/vendor"
 
 echo "-----> Fetching Calibre"
 
-wget --quiet https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py -O /tmp/linux-installer.py > /dev/null 2>&1
+curl --silent --output /tmp/linux-installer.py https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py > /dev/null 2>&1
 
 echo "-----> Installing Calibre"
 
-python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")"
+python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" > /dev/null 2>&1
 
 echo "-----> Setting up path"
 
