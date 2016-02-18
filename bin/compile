@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+# fail fast
+set -e
+
+# parse and derive params
+BUILD_DIR=$1
+CACHE_DIR=$2
+LP_DIR=`cd $(dirname $0); cd ..; pwd`
+BUILDPACK_DIR="$(dirname $(dirname $0))"
+VENDORED_CALIBRE="vendor/calibre"
+
+rm -rf "$BUILD_DIR/$VENDORED_TOOLBELT"
+mkdir -p "$BUILD_DIR"
+cd
+
+wget -nv https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py -O /tmp/linux-installer.py
+
+python2.7 -c 'execfile("/tmp/linux-installer.py"); main(install_dir="/tmp")'
+
+mv calibre "$BUILD_DIR/$VENDORED_TOOLBELT"
+
+export PATH=""$BUILD_DIR/$VENDORED_TOOLBELT"/bin:\$PATH"
