@@ -11,7 +11,7 @@ LP_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILDPACK_DIR="$(dirname $(dirname $0))"
 VENDORED_CALIBRE="vendor/calibre"
 
-rm -rf "$BUILD_DIR/$VENDORED_TOOLBELT"
+rm -rf "$BUILD_DIR/$VENDORED_CALIBRE"
 mkdir -p "$BUILD_DIR/vendor"
 
 echo "-----> Fetching Calibre"
@@ -20,14 +20,10 @@ wget --quiet https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/l
 
 echo "-----> Installing Calibre"
 
-python2.7 -c 'execfile("/tmp/linux-installer.py"); main(install_dir="/tmp")'
-
-echo "-----> Moving Calibre into place"
-
-mv /tmp/calibre "$BUILD_DIR/$VENDORED_CALIBRE"
+python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")"
 
 echo "-----> Setting up path"
 
-export PATH=""$BUILD_DIR/$VENDORED_CALIBRE"/bin:\$PATH"
+export PATH="$BUILD_DIR/calibre:$PATH"
 
 echo "-----> Calibre install done"
