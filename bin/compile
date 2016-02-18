@@ -12,7 +12,7 @@ BUILDPACK_DIR="$(dirname $(dirname $0))"
 VENDORED_CALIBRE="vendor/calibre"
 
 rm -rf "$BUILD_DIR/$VENDORED_TOOLBELT"
-mkdir -p "$BUILD_DIR"
+mkdir -p "$BUILD_DIR/vendor"
 
 echo "-----> Fetching Calibre"
 
