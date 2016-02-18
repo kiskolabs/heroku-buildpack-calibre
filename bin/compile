@@ -16,7 +16,7 @@ mkdir -p "$BUILD_DIR/vendor"
 
 echo "-----> Fetching Calibre"
 
-wget --quiet https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py -O /tmp/linux-installer.py
+wget --quiet https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py -O /tmp/linux-installer.py > /dev/null 2>&1
 
 echo "-----> Installing Calibre"
 
