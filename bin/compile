@@ -19,11 +19,14 @@ echo "-----> Fetching Calibre"
 curl --silent --output /tmp/linux-installer.py https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py > /dev/null 2>&1
 
 echo "-----> Installing Calibre"
+unset PYTHONPATH
+unset PYTHONHOME
 
 python2.7 -c "execfile(\"/tmp/linux-installer.py\"); main(install_dir=\"$BUILD_DIR\")" > /dev/null 2>&1
 
 echo "-----> Setting up path"
 
-export PATH="$BUILD_DIR/calibre:$PATH"
+echo "export PATH=\$HOME/calibre:\$PATH" > $BUILD_DIR/.profile.d/calibre.sh
+echo $PATH
 
 echo "-----> Calibre install done"
